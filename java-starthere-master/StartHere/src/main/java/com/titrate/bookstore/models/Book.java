@@ -72,7 +72,7 @@ public class Book {
         return authors;
     }
 
-//    public void setAuthor(List<Author> authors) {
-//        this.authors = authors;
-//    }
+    public void setAuthors(List<Author> authorList) {
+        this.authors = authorList;
+    }
 }

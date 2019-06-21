@@ -33,22 +33,24 @@ public class BookServiceImpl implements BookService {
     @Transactional
     @Override
     public Book update(Book book, long id) {
-            Book currentBook = bookrepos.findById(id).orElseThrow(EntityNotFoundException::new);
-            if(book.getBooktitle() != null){
-                currentBook.setBooktitle(book.getBooktitle());
-            }
-            if(book.getPublishDate() > 0){
-                currentBook.setPublishDate(book.getPublishDate());
-            }
-            if (book.getIsbn() != null){
-                currentBook.setIsbn(book.getIsbn());
-            }
-//            if (book.getAuthors() != null ){
-//
-//            }
-            bookrepos.save(currentBook);
-            return currentBook;
+        Book currentBook = bookrepos.findById(id).orElseThrow(EntityNotFoundException::new);
+        if(book.getBooktitle() != null){
+            currentBook.setBooktitle(book.getBooktitle());
         }
+        if(book.getPublishDate() > 0){
+            currentBook.setPublishDate(book.getPublishDate());
+        }
+        if (book.getIsbn() != null){
+            currentBook.setIsbn(book.getIsbn());
+        }
+        if (book.getAuthors() != null && book.getAuthors().size() > 0){
+            currentBook.setAuthors(book.getAuthors());
+        }
+
+        bookrepos.save(currentBook);
+        return currentBook;
+    }
+
 
 
     @Override

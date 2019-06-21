@@ -23,23 +23,20 @@ public class BookController {
     }
 
     @PutMapping(value = "/data/books/{id}")
-    public ResponseEntity<?> updateBookInfo(@PathVariable long id){
-        bookService.update(bookService.findBookById(id), id);
+    public ResponseEntity<?> updateBookInfo(@PathVariable long id, @Valid @RequestBody Book book){
+        bookService.update(book, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/data/books/authors/{id}")
-    public ResponseEntity<?> assignBookToAuthor(@PathVariable long id,@Valid @RequestBody Book newBook){
-        newBook = bookService.save(newBook);
+    @PostMapping(value = "/data/books/{bookid},authors/{authorid}")
+    public ResponseEntity<?> assignBookToAuthor(@PathVariable long authorid,@PathVariable long bookid, @Valid @RequestBody Book newBook){
 
-        // set the location header for the newly created resource
-        HttpHeaders responseHeaders = new HttpHeaders();
-        URI newRoleURI = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(id)
-                .toUri();
-        responseHeaders.setLocation(newRoleURI);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/data/books/{id}")
+    public ResponseEntity<?> deleteBook(@PathVariable long id){
+        bookService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
