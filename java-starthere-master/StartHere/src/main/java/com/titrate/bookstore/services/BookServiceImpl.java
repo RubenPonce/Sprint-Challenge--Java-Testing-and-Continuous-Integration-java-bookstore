@@ -40,8 +40,8 @@ public class BookServiceImpl implements BookService {
             if(book.getPublishDate() > 0){
                 currentBook.setPublishDate(book.getPublishDate());
             }
-            if (book.getISBN() != null){
-                currentBook.setISBN(book.getISBN());
+            if (book.getIsbn() != null){
+                currentBook.setIsbn(book.getIsbn());
             }
             if (book.getAuthor() != null ){
                 currentBook.setAuthor(book.getAuthor());

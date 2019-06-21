@@ -13,11 +13,11 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String authorid;
-    private String lastName;
-    private String firstName;
+    private String lastname;
+    private String firstname;
 
     @ManyToMany
-    @JoinTable(name = "book",
+    @JoinTable(name = "wrote",
             joinColumns = {@JoinColumn(name = "authorid")},
             inverseJoinColumns = {@JoinColumn(name = "bookid")})
     @JsonIgnoreProperties("author")
@@ -26,10 +26,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(String lastName, String firstName, List<Book> books) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.books = books;
+    public Author(String lastname, String firstname) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+
     }
 
     public String getAuthorid() {
@@ -40,27 +40,27 @@ public class Author {
         this.authorid = authorid;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public List<Book> getBook() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBook(List<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }

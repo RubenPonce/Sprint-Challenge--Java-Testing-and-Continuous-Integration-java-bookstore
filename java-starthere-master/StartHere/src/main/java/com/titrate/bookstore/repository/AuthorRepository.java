@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.ArrayList;
 
 public interface AuthorRepository extends CrudRepository<Author, Long> {
-    ArrayList<Author> findAuthorsByLastNameLike (String name);
+//    ArrayList<Author> findAuthorsByLastnameLike (String name);
 }

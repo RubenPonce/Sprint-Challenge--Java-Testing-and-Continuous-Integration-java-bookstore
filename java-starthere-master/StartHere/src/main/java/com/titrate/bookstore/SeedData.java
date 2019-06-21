@@ -24,8 +24,8 @@ public class SeedData implements CommandLineRunner
     @Autowired
     UserService userService;
 
-//    @Autowired
-//    BookService bookService;
+    @Autowired
+    BookService bookService;
 
     @Override
     public void run(String[] args) throws Exception

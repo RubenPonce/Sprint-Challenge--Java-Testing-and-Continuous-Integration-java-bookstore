@@ -1,4 +1,9 @@
 package com.titrate.bookstore.services;
 
-public interface AuthorService {
+import com.titrate.bookstore.models.Author;
+
+import java.util.List;
+
+public interface AuthorService{
+    List<Author> findAll();
 }

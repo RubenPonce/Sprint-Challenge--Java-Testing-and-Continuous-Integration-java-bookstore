@@ -17,21 +17,21 @@ public class Book {
     @JsonIgnoreProperties("book")
     private Author author;
 
-    private String booktitle;
+    private String title;
 
-    private String ISBN;
+    private String isbn;
 
     @Column(nullable = true)
-    private int publishDate;
+    private int copy;
 
 
     public Book() {
     }
 
-    public Book(String booktitle, String ISBN, int publishDate, Author author) {
-        this.booktitle = booktitle;
-        this.ISBN = ISBN;
-        this.publishDate = publishDate;
+    public Book(String title, String isbn, int copy, Author author) {
+        this.title = title;
+        this.isbn = isbn;
+        this.copy = copy;
         this.author = author;
     }
 
@@ -44,27 +44,27 @@ public class Book {
     }
 
     public String getBooktitle() {
-        return booktitle;
+        return title;
     }
 
-    public void setBooktitle(String booktitle) {
-        this.booktitle = booktitle;
+    public void setBooktitle(String title) {
+        this.title = title;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public int getPublishDate() {
-        return publishDate;
+        return copy;
     }
 
-    public void setPublishDate(int publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishDate(int copy) {
+        this.copy = copy;
     }
 
     public Author getAuthor() {
