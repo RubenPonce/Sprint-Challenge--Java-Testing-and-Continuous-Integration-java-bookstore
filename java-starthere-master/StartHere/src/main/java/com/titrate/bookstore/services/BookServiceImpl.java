@@ -6,6 +6,7 @@ import com.titrate.bookstore.models.Book;
 import com.titrate.bookstore.repository.AuthorRepository;
 import com.titrate.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ public class BookServiceImpl implements BookService {
     AuthorRepository authorrepos;
 
     @Override
-    public List<Book> findAll() {
+    public List<Book> findAll(Pageable pageable) {
         List<Book> list = new ArrayList<>();
-        bookrepos.findAll().iterator().forEachRemaining(list::add);
+        bookrepos.findAll(pageable).iterator().forEachRemaining(list::add);
         return list;
     }
 

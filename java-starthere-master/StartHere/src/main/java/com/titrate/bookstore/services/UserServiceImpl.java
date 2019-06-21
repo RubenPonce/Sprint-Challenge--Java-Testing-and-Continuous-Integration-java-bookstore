@@ -1,6 +1,5 @@
 package com.titrate.bookstore.services;
 
-import com.titrate.bookstore.models.Quote;
 import com.titrate.bookstore.models.User;
 import com.titrate.bookstore.models.UserRoles;
 import com.titrate.bookstore.repository.RoleRepository;
@@ -79,10 +78,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
         }
         newUser.setUserRoles(newRoles);
 
-        for (Quote q : user.getQuotes())
-        {
-            newUser.getQuotes().add(new Quote(q.getQuote(), newUser));
-        }
+
 
         return userrepos.save(newUser);
     }
@@ -123,13 +119,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
                     }
                 }
 
-                if (user.getQuotes().size() > 0)
-                {
-                    for (Quote q : user.getQuotes())
-                    {
-                        currentUser.getQuotes().add(new Quote(q.getQuote(), currentUser));
-                    }
-                }
+
 
                 return userrepos.save(currentUser);
             } else

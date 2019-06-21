@@ -17,6 +17,7 @@ public class LogoutController
     @Autowired
     private TokenStore tokenStore;
 
+
     @RequestMapping(value = "/oauth/revoke-token",
                     method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
