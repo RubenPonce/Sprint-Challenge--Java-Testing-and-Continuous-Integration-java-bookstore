@@ -7,6 +7,7 @@ import com.titrate.bookstore.repository.AuthorRepository;
 import com.titrate.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void delete(long id) {
         if (bookrepos.findById(id).isPresent()){
+
             bookrepos.deleteById(id);
         }else{
             throw new EntityNotFoundException();
