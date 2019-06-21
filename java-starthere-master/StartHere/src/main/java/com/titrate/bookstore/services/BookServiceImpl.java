@@ -55,22 +55,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(long id) {
-//        if (bookrepos.findById(id).isPresent())
-//        {
-//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//            if (bookrepos.findById(id).get().getAuthor()().equalsIgnoreCase(authentication.getName()))
-//            {
-//                bookrepos.deleteById(id);
-//            }
-//            else
-//            {
-//                throw new EntityNotFoundException(Long.toString(id) + " " + authentication.getName());
-//            }
-//        }
-//        else
-//        {
-//            throw new EntityNotFoundException(Long.toString(id));
-//        }
+        if (bookrepos.findById(id).isPresent()){
+            bookrepos.deleteById(id);
+        }else{
+            throw new EntityNotFoundException();
+        }
 
     }
 
