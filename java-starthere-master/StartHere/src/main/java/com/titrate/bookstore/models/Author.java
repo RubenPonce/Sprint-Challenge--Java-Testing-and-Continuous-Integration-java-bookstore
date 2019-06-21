@@ -20,7 +20,7 @@ public class Author {
     @JoinTable(name = "wrote",
             joinColumns = {@JoinColumn(name = "authorid")},
             inverseJoinColumns = {@JoinColumn(name = "bookid")})
-    @JsonIgnoreProperties("author")
+    @JsonIgnoreProperties("authors")
     private List<Book> books = new ArrayList<>();
 
     public Author() {

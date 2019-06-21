@@ -43,9 +43,9 @@ public class BookServiceImpl implements BookService {
             if (book.getIsbn() != null){
                 currentBook.setIsbn(book.getIsbn());
             }
-            if (book.getAuthor() != null ){
-                currentBook.setAuthor(book.getAuthor());
-            }
+//            if (book.getAuthors() != null ){
+//
+//            }
             bookrepos.save(currentBook);
             return currentBook;
         }

@@ -3,6 +3,7 @@ package com.titrate.bookstore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,10 +13,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long bookid;
 
-    @ManyToOne
-    @JoinColumn(name = "authorid")
-    @JsonIgnoreProperties("book")
-    private Author author;
+    @ManyToMany
+    @JoinTable(name = "wrote", joinColumns = {@JoinColumn(name="bookid")}, inverseJoinColumns = {@JoinColumn(name="authorid")})
+    @JsonIgnoreProperties("books")
+    private List<Author> authors = new ArrayList<>();
 
     private String title;
 
@@ -28,11 +29,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String isbn, int copy, Author author) {
+    public Book(String title, String isbn, int copy) {
         this.title = title;
         this.isbn = isbn;
         this.copy = copy;
-        this.author = author;
+
     }
 
     public long getBookid() {
@@ -67,11 +68,11 @@ public class Book {
         this.copy = copy;
     }
 
-    public Author getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+//    public void setAuthor(List<Author> authors) {
+//        this.authors = authors;
+//    }
 }
