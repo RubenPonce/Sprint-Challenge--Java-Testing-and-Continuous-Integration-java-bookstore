@@ -12,7 +12,7 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String authorid;
+    private long authorid;
     private String lastname;
     private String firstname;
 
@@ -32,11 +32,11 @@ public class Author {
 
     }
 
-    public String getAuthorid() {
+    public long getAuthorid() {
         return authorid;
     }
 
-    public void setAuthorid(String authorid) {
+    public void setAuthorid(long authorid) {
         this.authorid = authorid;
     }
 

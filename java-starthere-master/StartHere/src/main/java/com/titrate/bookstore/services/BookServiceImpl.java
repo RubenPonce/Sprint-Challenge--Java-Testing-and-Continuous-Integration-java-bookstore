@@ -1,6 +1,9 @@
 package com.titrate.bookstore.services;
 
+import com.titrate.bookstore.exceptions.ResourceNotFoundException;
+import com.titrate.bookstore.models.Author;
 import com.titrate.bookstore.models.Book;
+import com.titrate.bookstore.repository.AuthorRepository;
 import com.titrate.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +19,8 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
     @Autowired
     BookRepository bookrepos;
+    @Autowired
+    AuthorRepository authorrepos;
 
     @Override
     public List<Book> findAll() {
@@ -68,4 +73,11 @@ public class BookServiceImpl implements BookService {
     public Book save(Book book) {
         return bookrepos.save(book);
     }
+    @Override
+    public void setBookAuthor(long bookid, long authorid) {
+        Book currentBook = bookrepos.findById(bookid).orElseThrow(EntityNotFoundException::new);
+        currentBook.getAuthors().add(authorrepos.findById(authorid).orElseThrow(EntityNotFoundException::new));
+        bookrepos.save(currentBook);
+    }
+
 }
